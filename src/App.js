@@ -46,9 +46,10 @@ function App() {
 
   //3. return Tours
 
+  // 6. add date to send to tour Tours component.
   return (
     <main>
-      <Tours />
+      <Tours tours={tours} />
     </main>
   );
 }
