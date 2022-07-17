@@ -5,9 +5,9 @@ import Tours from "./Tours";
 // I SWITCHED TO PERMANENT DOMAIN
 const url = "https://course-api.com/react-tours-project";
 function App() {
-  // 1. Set usestates
+  //1. set useStates loading og tours
   const [loading, setLoading] = useState(true);
-  const [tours, SetTours] = useState([]);
+  const [tours, setTours] = useState([]);
 
   //4. Fetch tours
   //setLoading, true
@@ -18,21 +18,24 @@ function App() {
   const fetchTours = async () => {
     setLoading(true);
     try {
-      const response = await fetch(url);
-      const tours = await response.json();
+      const repsonse = await fetch(url);
+      const tours = await repsonse.json();
       setLoading(false);
-      SetTours(tours);
+      setTours(tours);
     } catch (error) {
       setLoading(false);
       console.log(error);
     }
   };
+
   //5. useEffect, FetchTours
   useEffect(() => {
     fetchTours();
+    console.log(tours);
   }, []);
 
   //2. If loading, laoding
+
   if (loading) {
     return (
       <main>
@@ -40,7 +43,9 @@ function App() {
       </main>
     );
   }
+
   //3. return Tours
+
   return (
     <main>
       <Tours />
