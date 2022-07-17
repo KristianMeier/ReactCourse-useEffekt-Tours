@@ -9,6 +9,12 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
+  //ukendt step
+  const removeTour = (id) => {
+    const newTours = tours.filter((tours) => tours.id !== id);
+    setTours(newTours);
+  };
+
   //4. Fetch tours
   //setLoading, true
   //try: resposen: fetch url, tours setLoading, setTours
@@ -31,7 +37,6 @@ function App() {
   //5. useEffect, FetchTours
   useEffect(() => {
     fetchTours();
-    console.log(tours);
   }, []);
 
   //2. If loading, laoding
@@ -44,12 +49,26 @@ function App() {
     );
   }
 
+  // ukendt step.
+  if (tours.length === 0) {
+    return (
+      <main>
+        <div className="title">
+          <h2>no tours left</h2>
+          <button className="btn" onClick={() => fetchTours()}>
+            refresh
+          </button>
+        </div>
+      </main>
+    );
+  }
+
   //3. return Tours
 
   // 6. add date to send to tour Tours component.
   return (
     <main>
-      <Tours tours={tours} />
+      <Tours tours={tours} removeTour={removeTour} />
     </main>
   );
 }
