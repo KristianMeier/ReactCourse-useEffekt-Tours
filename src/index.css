@@ -4,7 +4,6 @@
   --spacing: 0.1rem;
   --radius: 0.25rem;
 }
-
 *,
 ::after,
 ::before {
@@ -35,46 +34,10 @@ h4 {
   line-height: 1.25;
   margin-bottom: 0.75rem;
 }
-h1 {
-  font-size: 3rem;
-}
-h2 {
-  font-size: 2rem;
-}
-h3 {
-  font-size: 1.25rem;
-}
-h4 {
-  font-size: 0.875rem;
-}
 p {
   margin-bottom: 1.25rem;
   color: hsl(210, 22%, 49%);
 }
-@media screen and (min-width: 800px) {
-  h1 {
-    font-size: 4rem;
-  }
-  h2 {
-    font-size: 2.5rem;
-  }
-  h3 {
-    font-size: 1.75rem;
-  }
-  h4 {
-    font-size: 1rem;
-  }
-  body {
-    font-size: 1rem;
-  }
-  h1,
-  h2,
-  h3,
-  h4 {
-    line-height: 1;
-  }
-}
-
 .section {
   width: 90vw;
   margin: 0 auto;
@@ -99,11 +62,6 @@ p {
   margin-top: 2rem;
   font-size: 1.2rem;
 }
-/*
-=============== 
-Tours
-===============
-*/
 main {
   width: 90vw;
   max-width: 620px;
@@ -123,7 +81,6 @@ main {
   margin-left: auto;
   margin-right: auto;
 }
-
 .single-tour {
   background: var(--clr-white);
   border-radius: var(--radius);
