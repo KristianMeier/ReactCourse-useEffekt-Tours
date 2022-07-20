@@ -1,31 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Loading from "./Loading";
 import Tours from "./Tours";
+import Loading from "./Loading";
+import Refresh from "./Refresh";
 
 const url = "https://course-api.com/react-tours-project";
 
 function App() {
-  //1. set useStates loading og tours
   const [loading, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
-  //ukendt step
   const removeTour = (id) => {
-    const newTours = tours.filter((tours) => tours.id !== id);
+    const newTours = tours.filter((tour) => tour.id !== id);
     setTours(newTours);
   };
-
-  //4. Fetch tours
-  //setLoading, true
-  //try: resposen: fetch url, tours setLoading, setTours
-  //catch:
-  //error setLoading
 
   const fetchTours = async () => {
     setLoading(true);
     try {
-      const repsonse = await fetch(url);
-      const tours = await repsonse.json();
+      const response = await fetch(url);
+      const tours = await response.json();
       setLoading(false);
       setTours(tours);
     } catch (error) {
@@ -33,14 +26,9 @@ function App() {
       console.log(error);
     }
   };
-
-  //5. useEffect, FetchTours
   useEffect(() => {
     fetchTours();
   }, []);
-
-  //2. If loading, laoding
-
   if (loading) {
     return (
       <main>
@@ -48,24 +36,13 @@ function App() {
       </main>
     );
   }
-
-  // ukendt step.
   if (tours.length === 0) {
     return (
       <main>
-        <div className="title">
-          <h2>no tours left</h2>
-          <button className="btn" onClick={() => fetchTours()}>
-            refresh
-          </button>
-        </div>
+        <Refresh />
       </main>
     );
   }
-
-  //3. return Tours
-
-  // 6. add date to send to tour Tours component.
   return (
     <main>
       <Tours tours={tours} removeTour={removeTour} />
